@@ -41,7 +41,24 @@ public class java_arrays {
         //compare both maps such as having same values and counts
         return letter_count_s.equals(letter_count_t);
 
-    }
+    }//end isAnagram
+
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> mapping = new HashMap<>();
+
+        for(int i = 0; i < nums.length; i++){
+            int diff = target - nums[i];
+
+            //if the difference exists in our hashmap then we return an array that will have both the difference index and the current index that met the target value
+            if(mapping.containsKey(diff)){
+                return new int[] {mapping.get(diff),i};
+            }
+
+            //if the difference is new, then add it to the hashmap along with its index
+            mapping.put(nums[i],i);
+        }
+        return new int[]{};
+    }//end twoSum
 
     public static void main(String[] args) {
         java_arrays prob1 = new java_arrays();
